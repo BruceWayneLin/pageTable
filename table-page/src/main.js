@@ -9,6 +9,8 @@ import '@/assets/dataTable/css/dataTables.foundation.min.css'
 import '@/assets/dataTable/css/dataTables.jqueryui.min.css'
 import '@/assets/dataTable/css/dataTables.semanticui.min.css'
 import '@/assets/dataTable/css/jquery.dataTables.min.css'
+import axios from 'axios'
+
 Vue.config.productionTip = false
 new Vue({
   router,

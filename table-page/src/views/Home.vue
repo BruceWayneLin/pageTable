@@ -8,11 +8,31 @@
 <script>
 // @ is an alias to /src
 import Table from '@/components/Table.vue'
-
+import axios from 'axios'
 export default {
   name: 'home',
   components: {
     Table
+  },
+  methods: {
+    callApi() {
+          axios.post('https://stage.ucoin.club:20000/api/values', {Body:
+    {
+    "userid":"I`m userid",
+    "gameid":"I`m gameid",
+    "token":"I`m toekn"
+    }})
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted() {
+    this.callApi();
+
   }
 }
 </script>
