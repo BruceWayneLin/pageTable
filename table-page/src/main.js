@@ -9,6 +9,20 @@ import '@/assets/dataTable/css/dataTables.foundation.min.css'
 import '@/assets/dataTable/css/dataTables.jqueryui.min.css'
 import '@/assets/dataTable/css/dataTables.semanticui.min.css'
 import '@/assets/dataTable/css/jquery.dataTables.min.css'
+import {
+  library
+} from '@fortawesome/fontawesome-svg-core'
+import {
+  faCoffee
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  FontAwesomeIcon
+} from '@fortawesome/vue-fontawesome'
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+library.add(faCoffee)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 import axios from 'axios'
 let config = {
   "game_id": "0",

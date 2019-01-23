@@ -50,10 +50,7 @@ export default {
   },
   methods: {
     appendData(value) {
-      console.log("1243214321", value);
-
       this.clickData = JSON.parse(value["jsonGameResultHistory"]);
-      console.log(this.clickData);
     }
   },
   computed: {

@@ -26,7 +26,7 @@
                   <td>{{item['pillarLeft']}}</td>
                   <td>
                     {{item['ball']}}
-                    <i class="fa-spade" style="color: white;"></i>
+                    <font-awesome-icon icon="coffee"/>
                   </td>
                   <td>{{item['pillarRight']}}</td>
                   <td>{{item['combinationType']}}</td>
