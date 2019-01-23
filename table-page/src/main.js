@@ -13,13 +13,13 @@ import {
   library
 } from '@fortawesome/fontawesome-svg-core'
 import {
-  faCoffee
+  fas
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-library.add(faCoffee)
+library.add(fas)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

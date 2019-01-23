@@ -24,10 +24,7 @@
                 <tr>
                   <th scope="row">1</th>
                   <td>{{item['pillarLeft']}}</td>
-                  <td>
-                    {{item['ball']}}
-                    <font-awesome-icon icon="coffee"/>
-                  </td>
+                  <td>{{item['ball']}}</td>
                   <td>{{item['pillarRight']}}</td>
                   <td>{{item['combinationType']}}</td>
                 </tr>
