@@ -13,11 +13,11 @@ export default new Vuex.Store({
     setting
   },
   actions: {
-    callApi({
+    async callApi({
       commit,
       state
     }, data) {
-      axios.post(data['url'], data)
+      await axios.post(data['url'], data)
         .then(function (response) {
           state.tableData = JSON.parse(response['data']['payload'])
         })

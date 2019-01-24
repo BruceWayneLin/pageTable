@@ -19,7 +19,7 @@ export default {
   },
   methods: {},
   mounted() {
-    "http://localhost:8081/#/?p1=0&p2=0&p3=48&p4=fjsapfe8wpuevjaur539woeitroiewlvlsnvdwaur9813up9HY%28%2aY%28HPNfhdoahfe923uwhofhe12y34321yrhehefpfjdsajfh09e2urjpfp";
+    // http://localhost:8081/#/?p1=0&p2=0&p3=48&p4=fjsapfe8wpuevjaur539woeitroiewlvlsnvdwaur9813up9HY%28%2aY%28HPNfhdoahfe923uwhofhe12y34321yrhehefpfjdsajfh09e2urjpfp
     var agent_id = this.$route.query.p1;
     var game_id = this.$route.query.p2;
     var user_id = this.$route.query.p3;

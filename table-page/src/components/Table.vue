@@ -4,14 +4,14 @@
     <table id="example" class="table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
-          <th>bet</th>
-          <th>credit</th>
-          <th>datetime</th>
-          <th>ID</th>
-          <th>operationType</th>
-          <th>totalBet</th>
-          <th>totalWin</th>
-          <th>win</th>
+          <th>押注金額</th>
+          <th>餘額</th>
+          <th>日期時間</th>
+          <th>流水號</th>
+          <th>操作行為</th>
+          <th>總押注</th>
+          <th>總贏分</th>
+          <th>贏分</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,7 @@
           <td>{{item['credit']}}</td>
           <td>{{item['datetime']}}</td>
           <td>{{item['id']}}</td>
-          <td>{{item['operationType']}}</td>
+          <td>{{computedStatus(item['operationType'])}}</td>
           <td>{{item['totalBet']}}</td>
           <td>{{item['totalWin']}}</td>
           <td>{{item['win']}}</td>
@@ -49,8 +49,36 @@ export default {
     };
   },
   methods: {
+    computedStatus(value) {
+      switch (value) {
+        case 0:
+          return "換匯";
+        case 1:
+          return "結算";
+        case 2:
+          return "正在玩";
+        case 3:
+          return "普通押注";
+        case 4:
+          return "加倍押注";
+        case 5:
+          return "壓大";
+        default:
+      }
+    },
     appendData(value) {
-      this.clickData = JSON.parse(value["jsonGameResultHistory"]);
+      let data = {
+        ball: "",
+        combinationType: "",
+        pillarLeft: "",
+        pillarRight: ""
+      };
+      if (value["jsonGameResultHistory"]) {
+        this.clickData = JSON.parse(value["jsonGameResultHistory"]);
+      } else {
+        this.clickData = data;
+      }
+      console.log(this.clickData);
     }
   },
   computed: {
@@ -94,7 +122,8 @@ export default {
             sortAscending: ": 升冪排列",
             sortDescending: ": 降冪排列"
           }
-        }
+        },
+        deferLoading: 57
       });
     });
   }
