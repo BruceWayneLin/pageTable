@@ -72,6 +72,7 @@ export default {
       if (this.tableArr) {
         var table = $("#example").DataTable({
           data: this.tableArr,
+          responsive: true,
           columns: [
             { data: "id" },
             { data: "bet" },
@@ -110,6 +111,9 @@ export default {
             dataGet = table.row(this).data();
             vm.appendData(dataGet);
             $("#myModal").modal("show");
+            $("#myModal").on("shown.bs.modal", function() {
+              document.getElementById("FocusTo").focus();
+            });
           });
         });
       } else {

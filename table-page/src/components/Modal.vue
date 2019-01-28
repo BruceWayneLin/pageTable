@@ -53,7 +53,13 @@
             </table>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+            <button
+              id="closeBtn"
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              autofocus
+            >關閉</button>
           </div>
         </div>
       </div>
@@ -136,6 +142,20 @@ tbody span {
   width: 100%;
 }
 .modal-dialog {
-  max-width: 80% !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%) !important;
+}
+button {
+  display: inline-block;
+  margin: auto;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
 }
 </style>
