@@ -23,9 +23,30 @@
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>{{item['pillarLeft'] ? calPattern(item['pillarLeft']): '無資料'}}</td>
-                  <td>{{item['ball'] ? calPattern(item['ball']): '無資料'}}</td>
-                  <td>{{item['pillarRight'] ? calPattern(item['pillarRight']): '無資料'}}</td>
+                  <td>
+                    <img
+                      v-if="calPattern(item['pillarLeft'])"
+                      style="background-color:white;"
+                      :src="`../imgs/cardPattern/${calPattern(item['pillarLeft'])}.png`"
+                    >
+                    <span>{{item['pillarLeft'] ? calNumber(item['pillarLeft']) : '無資料'}}</span>
+                  </td>
+                  <td>
+                    <img
+                      v-if="calPattern(item['ball'])"
+                      style="background-color:white;"
+                      :src="`../imgs/cardPattern/${calPattern(item['ball'])}.png`"
+                    >
+                    <span>{{item['pillarLeft'] ? calNumber(item['ball']) : '無資料'}}</span>
+                  </td>
+                  <td>
+                    <img
+                      v-if="calPattern(item['pillarRight'])"
+                      style="background-color:white;"
+                      :src="`../imgs/cardPattern/${calPattern(item['pillarRight'])}.png`"
+                    >
+                    <span>{{item['pillarLeft'] ? calNumber(item['pillarRight']) : '無資料'}}</span>
+                  </td>
                   <td>{{item['combinationType'] ? computedText(item['combinationType']): '無資料'}}</td>
                 </tr>
               </tbody>
@@ -47,9 +68,8 @@ export default {
   },
   computed: {},
   methods: {
-    calPattern(index) {
-      let value = index % 4;
-      let number = Math.floor(index / 4 + 1);
+    calNumber(index) {
+      var number = Math.floor(index / 4 + 1);
       if (number == 11) {
         number = "J";
       } else if (number == 12) {
@@ -57,15 +77,22 @@ export default {
       } else if (number == 13) {
         number = "K";
       }
+      return number;
+    },
+    calPattern(index) {
+      if (!index) {
+        return "";
+      }
+      let value = index % 4;
       switch (value) {
         case 0:
-          return `梅花${number}`;
+          return `club`;
         case 1:
-          return `方塊${number}`;
+          return `diamond`;
         case 2:
-          return `紅心${number}`;
+          return `heart`;
         case 3:
-          return `黑桃${number}`;
+          return `spade`;
         default:
       }
     },
@@ -100,6 +127,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+tbody span {
+  padding-left: 5px;
+  position: relative;
+  top: 3px;
+}
 .modal-title {
   width: 100%;
 }

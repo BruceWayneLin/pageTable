@@ -4,33 +4,17 @@
     <table id="example" class="table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
+          <th>流水號</th>
           <th>押注金額</th>
           <th>餘額</th>
           <th>日期時間</th>
-          <th>流水號</th>
           <th>操作行為</th>
           <th>總押注</th>
           <th>總贏分</th>
           <th>贏分</th>
         </tr>
       </thead>
-      <tbody>
-        <tr
-          v-for="item in tableArr"
-          @click="appendData(item)"
-          data-toggle="modal"
-          data-target="#myModal"
-        >
-          <td>{{item['bet']}}</td>
-          <td>{{item['credit']}}</td>
-          <td>{{item['datetime']}}</td>
-          <td>{{item['id']}}</td>
-          <td>{{computedStatus(item['operationType'])}}</td>
-          <td>{{item['totalBet']}}</td>
-          <td>{{item['totalWin']}}</td>
-          <td>{{item['win']}}</td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
       <tfoot></tfoot>
     </table>
     <customModal :item="clickData"/>
@@ -78,16 +62,57 @@ export default {
       } else {
         this.clickData = data;
       }
-      console.log(this.clickData);
     }
   },
   computed: {
     getTableData() {
       this.tableArr = this.$store.state.tableData["mTableWagers"];
+      var dataGet;
+      var vm = this;
       if (this.tableArr) {
-        $(".dataTables_empty").hide();
+        var table = $("#example").DataTable({
+          data: this.tableArr,
+          columns: [
+            { data: "id" },
+            { data: "bet" },
+            { data: "credit" },
+            { data: "datetime" },
+            { data: "operationType" },
+            { data: "totalBet" },
+            { data: "totalWin" },
+            { data: "win" }
+          ],
+          language: {
+            emptyTable: "無資料...",
+            processing: "處理中...",
+            loadingRecords: "載入中...",
+            lengthMenu: "顯示 _MENU_ 項結果",
+            zeroRecords: "沒有符合的結果",
+            info: "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+            infoEmpty: "顯示第 0 至 0 項結果，共 0 項",
+            infoFiltered: "(從 _MAX_ 項結果中過濾)",
+            infoPostFix: "",
+            search: "搜尋:",
+            paginate: {
+              first: "第一頁",
+              previous: "上一頁",
+              next: "下一頁",
+              last: "最後一頁"
+            },
+            aria: {
+              sortAscending: ": 升冪排列",
+              sortDescending: ": 降冪排列"
+            }
+          }
+        });
+        $(document).ready(() => {
+          $("#example tbody").on("click", "tr", function() {
+            dataGet = table.row(this).data();
+            vm.appendData(dataGet);
+            $("#myModal").modal("show");
+          });
+        });
       } else {
-        $(".dataTables_empty").show();
       }
       return this.$store.state.tableData;
     }
@@ -98,35 +123,7 @@ export default {
   components: {
     customModal
   },
-  mounted() {
-    $(document).ready(function() {
-      $("#example").DataTable({
-        language: {
-          emptyTable: "無資料...",
-          processing: "處理中...",
-          loadingRecords: "載入中...",
-          lengthMenu: "顯示 _MENU_ 項結果",
-          zeroRecords: "沒有符合的結果",
-          info: "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
-          infoEmpty: "顯示第 0 至 0 項結果，共 0 項",
-          infoFiltered: "(從 _MAX_ 項結果中過濾)",
-          infoPostFix: "",
-          search: "搜尋:",
-          paginate: {
-            first: "第一頁",
-            previous: "上一頁",
-            next: "下一頁",
-            last: "最後一頁"
-          },
-          aria: {
-            sortAscending: ": 升冪排列",
-            sortDescending: ": 降冪排列"
-          }
-        },
-        deferLoading: 57
-      });
-    });
-  }
+  mounted() {}
 };
 </script>
 

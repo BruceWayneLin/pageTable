@@ -24,7 +24,7 @@ export default {
     var game_id = this.$route.query.p2;
     var user_id = this.$route.query.p3;
     var payload = this.$route.query.p4;
-    window.location.pathName = this.$router.push({ path: "/", replace: true });
+    // window.location.pathName = this.$router.push({ path: "/", replace: true });
     var data = {};
     data["agent_id"] = agent_id;
     data["game_id"] = game_id;
