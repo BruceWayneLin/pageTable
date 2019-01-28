@@ -145,7 +145,7 @@ tbody span {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50%;
+  width: 100%;
   transform: translate(-50%, -50%) !important;
 }
 button {
